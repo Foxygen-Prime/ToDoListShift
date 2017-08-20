@@ -29,13 +29,26 @@
     <div class="row">
       <div class="col-xs-12">
         <!-- TODO write your HTML/Mustache here -->
-        <h1>{{title}}</h1>
-        <ul class="todo-list">
-          {{#items}}
-            <li>{{#done}}<input type="checkbox" name="box" checked> <s>{{text}}</s>{{/done}}</li>
-            <li>{{^done}}<input type="checkbox" name="box">{{text}}{{/done}}</li>
-          {{/items}}
-        </ul>
+        <h1>The ToDo List Completion Tracker</h1>
+        <br>
+        <form class="" action="/" method="post">
+          <input type="text" name="todo" value="" placeholder="Add a ToDo...">
+          <button type="button" name="button">Add ToDo</button>
+        </form>
+        {{#data}}
+            {{^done}}
+            <form class="" action="/{{id}}" method="post">
+              <input type="button" name="box" value= "Mark Completed">
+              <label>{{text}}</label>
+              </form>
+              {{/done}}
+          {{/data}}
+          <h3>Completed Tasks</h3>
+          {{#data}}
+        {{#done}}
+        <li>{{text}}</li>
+        {{/done}}
+          {{/data}}
 </div>
 </div>
 </div>
